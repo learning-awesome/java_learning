@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - ImageUtil",
+      "request": "launch",
+      "mainClass": "app.ImageUtil",
+      "projectName": "ImageCompress"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - App",
       "request": "launch",
       "mainClass": "App",

@@ -3,16 +3,25 @@ import net.coobird.thumbnailator.Thumbnails;
 import java.io.File;
 
 public class App { 
-    public static void main(String[] args) throws Exception {
+
+    private static void compressImage(String filepath) throws Exception  {
         String root = System.getProperty("user.dir");
-        String img = root + "/resource/high.jpg";
-        File fromFile = new File(img);
+        String fromFilename = root + "/" + filepath;
+        File fromFile = new File(fromFilename);
+        String filename = fromFile.getName();
+        System.out.println(fromFilename + " size: " + fromFile.length()/1024 + "KB");
         //尺寸不变，修改文件大小
-        Thumbnails.of(fromFile).scale(1).toFile(root + "/dist/high_compress.jpg");
-        Thumbnails.of(fromFile).scale(1).outputQuality(0.9f).toFile(root + "/dist/high_compress_9.jpg");
-        Thumbnails.of(fromFile).scale(1).outputQuality(0.8f).toFile(root + "/dist/high_compress_8.jpg");
-        Thumbnails.of(fromFile).scale(1).outputQuality(0.7f).toFile(root + "/dist/high_compress_7.jpg");
-        Thumbnails.of(fromFile).scale(1).outputQuality(0.6f).toFile(root + "/dist/high_compress_6.jpg");
-        Thumbnails.of(fromFile).scale(1).outputQuality(0.5f).toFile(root + "/dist/high_compress_5.jpg");
+        for(int i=9;i>5; i--) {
+            String toFilepath = root + "/dist/" + i + "_" + filename;
+            Thumbnails.of(fromFile).scale(1).outputQuality(i/10.0).toFile(toFilepath);
+            File toFile = new File(toFilepath);
+            long l = toFile.length();
+            System.out.println(toFilepath + " size: " + l/1024 + "KB");
+        }
+        System.out.println("\r\n");
+    }
+    public static void main(String[] args) throws Exception {
+        compressImage("resource/high.jpg");
+        compressImage("resource/wzry.png");
     }
 }
