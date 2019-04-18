@@ -136,11 +136,8 @@ public class ImageUtil {
         g.fillRect(0, 0, old_w, old_h);  
         g.drawImage(src, 0, 0, old_w, old_h, Color.white, null);  
         g.dispose();  
-        BufferedImage newImg = new BufferedImage(new_w, new_h,  
-                BufferedImage.TYPE_INT_RGB);  
-        newImg.getGraphics().drawImage(  
-                tempImg.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0,  
-                0, null);  
+        BufferedImage newImg = new BufferedImage(new_w, new_h,  BufferedImage.TYPE_INT_RGB);  
+        newImg.getGraphics().drawImage(tempImg.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0,  0, null);  
         // 调用方法输出图片文件  
         outImage(outImgPath, newImg, per);  
     }  
@@ -179,11 +176,8 @@ public class ImageUtil {
         g.dispose();  
         // 根据图片尺寸压缩比得到新图的尺寸new_w = (int) Math.round(old_w * ratio);  
         new_h = (int) Math.round(old_h * ratio);  
-        BufferedImage newImg = new BufferedImage(new_w, new_h,  
-                BufferedImage.TYPE_INT_RGB);  
-        newImg.getGraphics().drawImage(  
-                tempImg.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0,  
-                0, null);  
+        BufferedImage newImg = new BufferedImage(new_w, new_h,  BufferedImage.TYPE_INT_RGB);  
+        newImg.getGraphics().drawImage(  tempImg.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0,  0, null);  
         // 调用方法输出图片文件OutImage(outImgPath, newImg, per);  
     }  
   
